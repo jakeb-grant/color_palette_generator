@@ -1658,12 +1658,12 @@ def generate_zed_themes(dark_palette, light_palette, theme_name):
     return json.dumps(theme_data, indent=2)
 
 
-if __name__ == "__main__":
+def main():
     import os
     import sys
 
     if len(sys.argv) < 2:
-        print("Usage: palette_generator.py <image_path> [output_directory]")
+        print("Usage: color-palette-generator <image_path> [output_directory]")
         sys.exit(1)
 
     image_path = sys.argv[1]
@@ -1744,3 +1744,7 @@ if __name__ == "__main__":
         f"  - {zed_path} (contains both '{theme_name} Dark' and '{theme_name} Light')"
     )
     print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()

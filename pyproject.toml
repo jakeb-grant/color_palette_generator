@@ -1,0 +1,21 @@
+[project]
+name = "color-palette-generator"
+version = "0.1.0"
+description = "Generate functional color palettes from images for Zed themes with WCAG contrast enforcement"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pillow",
+    "scikit-learn",
+]
+
+[project.scripts]
+color-palette-generator = "color_palette_generator:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]

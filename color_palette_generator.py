@@ -1434,7 +1434,7 @@ def _build_zed_style(palette, is_dark, opacity=None):
         # Title/status bars - standalone, no stacking
         "status_bar.background": f"{palette['background_light'].hex}{title_status_alpha}",
         "title_bar.background": f"{palette['background_light'].hex}{title_status_alpha}",
-        "title_bar.inactive_background": f"{palette['background_disabled'].hex}{title_status_alpha}",
+        "title_bar.inactive_background": f"{palette['background_light'].hex}{title_status_alpha}",
         "toolbar.background": f"{palette['background'].hex}{editor_alpha}",
         # Tab bar - stacks on global
         "tab_bar.background": f"{palette['background_medium'].hex}{tab_bar_alpha}",

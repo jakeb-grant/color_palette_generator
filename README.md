@@ -17,7 +17,7 @@ Generate functional color palettes from images for Zed editor themes (and other 
 ### Run directly from GitHub with uvx
 
 ```bash
-uvx --from git+https://github.com/jakeb-grant/color_palette_generator color-palette-generator <image_path> [output_directory]
+uvx --from git+https://github.com/jakeb-grant/color_palette_generator color-palette-generator <image_path> [-o output_directory]
 ```
 
 ### Install locally
@@ -28,21 +28,42 @@ git clone https://github.com/jakeb-grant/color_palette_generator.git
 cd color_palette_generator
 
 # Run with uv
-uv run color_palette_generator.py <image_path> [output_directory]
+uv run color-palette-generator <image_path> [-o output_directory]
 ```
 
 ## Usage
+
+### Generate from image
 
 ```bash
 # Generate theme from an image (outputs to same directory as image)
 color-palette-generator my-wallpaper.png
 
 # Specify output directory
-color-palette-generator my-wallpaper.png ./my-theme/
+color-palette-generator my-wallpaper.png -o ./my-theme/
 
 # Override blur theme opacity (0.0-1.0)
-color-palette-generator my-wallpaper.png ./my-theme/ --opacity 0.85
+color-palette-generator my-wallpaper.png -o ./my-theme/ --opacity 0.85
 ```
+
+### Generate from existing palette JSON
+
+You can also generate outputs from an existing `palette-*.json` file:
+
+```bash
+# Load palette from JSON and generate all outputs
+color-palette-generator --from-palette palette-dark.json -o ./output --name "my-theme"
+
+# With custom opacity
+color-palette-generator --from-palette palette-dark.json -o ./output --name "my-theme" --opacity 0.85
+```
+
+This is useful for:
+- Manually tweaking a generated palette and regenerating outputs
+- Creating themes from scratch without an image
+- Re-exporting with different opacity values
+
+**Note:** When using `--from-palette`, only a single theme variant (dark or light) is generated, detected automatically from the palette's background luminance.
 
 ## Output Files
 

@@ -4,7 +4,6 @@ Generate all themes from images in the images folder.
 Consolidates blur themes into out/themes/ folder.
 """
 
-import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -36,13 +35,19 @@ def main():
         theme_name = image_path.stem
         theme_out_dir = out_dir / theme_name
 
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
         print(f"Generating: {theme_name}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         # Run the generator
         result = subprocess.run(
-            ["uv", "run", "color-palette-generator", str(image_path), str(theme_out_dir)],
+            [
+                "uv",
+                "run",
+                "color-palette-generator",
+                str(image_path),
+                str(theme_out_dir),
+            ],
             cwd=root,
         )
 
@@ -64,10 +69,10 @@ def main():
 
         print()
 
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print("Done! All themes consolidated in:")
     print(f"  {themes_dir}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
 
 if __name__ == "__main__":

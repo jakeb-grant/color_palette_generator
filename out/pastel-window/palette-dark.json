@@ -60,5 +60,9 @@
     "background": "E6",
     "selection": "80"
   },
-  "_note": "24 terminal colors: black/red/green/yellow/blue/magenta/cyan/white with _bright and _dim variants"
+  "_note": "24 terminal colors: black/red/green/yellow/blue/magenta/cyan/white with _bright and _dim variants",
+  "_wallpaper": "pastel-window.png",
+  "_zed_theme_dark": "pastel-window Dark Blur",
+  "_zed_theme_light": "pastel-window Light Blur",
+  "_gtk_color_scheme": "prefer-dark"
 }

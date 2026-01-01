@@ -92,7 +92,16 @@ def _run_from_palette(args):
     zed_blur_path = os.path.join(output_dir, f"{theme_name}-blur.json")
 
     # Export palette JSON (with updated opacity metadata)
-    export_json(palette, palette_json_path, blur_opacity=opacity)
+    source_file = os.path.basename(palette_path)
+    export_json(
+        palette,
+        palette_json_path,
+        blur_opacity=opacity,
+        source_file=source_file,
+        theme_name=theme_name,
+        is_dark=is_dark_theme,
+        has_both_variants=False,
+    )
 
     # Export HTML preview (pass empty list for extracted_colors since we don't have them)
     create_html_preview(palette, [], html_path, is_dark_theme)
@@ -176,7 +185,16 @@ def _run_from_image(args):
         light_opacity = calculate_theme_opacity(light_palette, is_dark_theme=False)
 
     # Export dark theme files
-    export_json(dark_palette, dark_json_path, blur_opacity=dark_opacity)
+    source_file = os.path.basename(image_path)
+    export_json(
+        dark_palette,
+        dark_json_path,
+        blur_opacity=dark_opacity,
+        source_file=source_file,
+        theme_name=theme_name,
+        is_dark=True,
+        has_both_variants=True,
+    )
     create_html_preview(
         dark_palette, dark_extracted, dark_html_path, is_dark_theme=True
     )
@@ -184,7 +202,15 @@ def _run_from_image(args):
         f.write(dark_report)
 
     # Export light theme files
-    export_json(light_palette, light_json_path, blur_opacity=light_opacity)
+    export_json(
+        light_palette,
+        light_json_path,
+        blur_opacity=light_opacity,
+        source_file=source_file,
+        theme_name=theme_name,
+        is_dark=False,
+        has_both_variants=True,
+    )
     create_html_preview(
         light_palette, light_extracted, light_html_path, is_dark_theme=False
     )

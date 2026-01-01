@@ -60,5 +60,9 @@
     "background": "E6",
     "selection": "80"
   },
-  "_note": "24 terminal colors: black/red/green/yellow/blue/magenta/cyan/white with _bright and _dim variants"
+  "_note": "24 terminal colors: black/red/green/yellow/blue/magenta/cyan/white with _bright and _dim variants",
+  "_wallpaper": "everforest.jpg",
+  "_zed_theme_dark": "everforest Dark Blur",
+  "_zed_theme_light": "everforest Light Blur",
+  "_gtk_color_scheme": "prefer-dark"
 }

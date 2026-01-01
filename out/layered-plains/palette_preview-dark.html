@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Color Palette Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #232423;
+            color: #e8e6e4;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        h1 { margin-bottom: 10px; font-weight: 400; }
+        .theme-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 30px;
+            background: #3a3c3a;
+            color: #bfc2c3;
+        }
+        h2 {
+            margin: 30px 0 15px 0;
+            font-weight: 400;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #bfc2c3;
+        }
+        .palette-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .color-card {
+            width: 160px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #3a3c3a;
+        }
+        .color-swatch {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .color-info {
+            padding: 12px;
+            font-size: 11px;
+        }
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .color-hex {
+            opacity: 0.7;
+        }
+        .terminal-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+        }
+        .terminal-color {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .preview-box {
+            background: #3a3c3a;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .preview-box h3 {
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .sample-text { margin: 8px 0; }
+        .dim { color: #bfc2c3; }
+        .primary { color: #eddeba; }
+        .secondary { color: #90b0c8; }
+        .blur-demo {
+            background: #232423E6;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #1a1b1a;
+        }
+        .contrast-test {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .contrast-box {
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .contrast-box h4 {
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contrast-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Functional Color Palette</h1>
+    <div class="theme-badge">Dark Theme</div>
+
+    <h2>Backgrounds & Foregrounds</h2>
+    <div class="palette-section">
+        <div class="color-card">
+        <div class="color-swatch" style="background: #232423; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">background</div>
+            <div class="color-hex">#232423</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #2e302e; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">background_medium</div>
+            <div class="color-hex">#2e302e</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #3a3c3a; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">background_light</div>
+            <div class="color-hex">#3a3c3a</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #1a1b1a; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">background_disabled</div>
+            <div class="color-hex">#1a1b1a</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #f5f4f3; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">foreground_bright</div>
+            <div class="color-hex">#f5f4f3</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #e8e6e4; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">foreground</div>
+            <div class="color-hex">#e8e6e4</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #d8d6d4; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">foreground_medium</div>
+            <div class="color-hex">#d8d6d4</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #bfc2c3; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">foreground_dim</div>
+            <div class="color-hex">#bfc2c3</div>
+        </div>
+    </div>
+    </div>
+
+    <h2>Element Backgrounds</h2>
+    <div class="palette-section">
+        <div class="color-card">
+        <div class="color-swatch" style="background: #292a29; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">element</div>
+            <div class="color-hex">#292a29</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #343534; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">element_hover</div>
+            <div class="color-hex">#343534</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #404140; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">element_active</div>
+            <div class="color-hex">#404140</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #404140; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">element_selected</div>
+            <div class="color-hex">#404140</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #1f201f; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">element_disabled</div>
+            <div class="color-hex">#1f201f</div>
+        </div>
+    </div>
+    </div>
+
+    <h2>Borders</h2>
+    <div class="palette-section">
+        <div class="color-card">
+        <div class="color-swatch" style="background: #4a4b4a; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">border</div>
+            <div class="color-hex">#4a4b4a</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #5a5b5a; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">border_variant</div>
+            <div class="color-hex">#5a5b5a</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #eddeba; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">border_focused</div>
+            <div class="color-hex">#eddeba</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #f5ead0; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">border_selected</div>
+            <div class="color-hex">#f5ead0</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #3a3c3a; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">border_disabled</div>
+            <div class="color-hex">#3a3c3a</div>
+        </div>
+    </div>
+    </div>
+
+    <h2>Accent Colors</h2>
+    <div class="palette-section">
+        <div class="color-card">
+        <div class="color-swatch" style="background: #eddeba; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">primary</div>
+            <div class="color-hex">#eddeba</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #f5ead0; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">primary_variant</div>
+            <div class="color-hex">#f5ead0</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #90b0c8; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">secondary</div>
+            <div class="color-hex">#90b0c8</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #a8c8e0; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">secondary_variant</div>
+            <div class="color-hex">#a8c8e0</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #c0b8d0; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">tertiary</div>
+            <div class="color-hex">#c0b8d0</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #1a1b1a; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">muted</div>
+            <div class="color-hex">#1a1b1a</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #404140; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">selection</div>
+            <div class="color-hex">#404140</div>
+        </div>
+    </div>
+    </div>
+
+    <h2>Semantic Colors</h2>
+    <div class="palette-section">
+        <div class="color-card">
+        <div class="color-swatch" style="background: #f0a090; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">error</div>
+            <div class="color-hex">#f0a090</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #eddeba; color: #000000">Aa</div>
+        <div class="color-info">
+            <div class="color-name">warning</div>
+            <div class="color-hex">#eddeba</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #88c880; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">success</div>
+            <div class="color-hex">#88c880</div>
+        </div>
+    </div>
+<div class="color-card">
+        <div class="color-swatch" style="background: #98b8d0; color: #ffffff">Aa</div>
+        <div class="color-info">
+            <div class="color-name">info</div>
+            <div class="color-hex">#98b8d0</div>
+        </div>
+    </div>
+    </div>
+
+    <h2>Terminal Colors (0-15)</h2>
+    <div class="terminal-grid">
+        <div class="terminal-color" style="background: #232423; color: #ffffff">black</div>
+<div class="terminal-color" style="background: #f09088; color: #ffffff">red</div>
+<div class="terminal-color" style="background: #88c880; color: #ffffff">green</div>
+<div class="terminal-color" style="background: #eddeba; color: #000000">yellow</div>
+<div class="terminal-color" style="background: #90b0c8; color: #ffffff">blue</div>
+<div class="terminal-color" style="background: #c8a8c8; color: #ffffff">magenta</div>
+<div class="terminal-color" style="background: #80c0b8; color: #ffffff">cyan</div>
+<div class="terminal-color" style="background: #d8d6d4; color: #000000">white</div>
+<div class="terminal-color" style="background: #4a4b4a; color: #ffffff">black_bright</div>
+<div class="terminal-color" style="background: #f8a8a0; color: #000000">red_bright</div>
+<div class="terminal-color" style="background: #a0d898; color: #000000">green_bright</div>
+<div class="terminal-color" style="background: #f5ead0; color: #000000">yellow_bright</div>
+<div class="terminal-color" style="background: #a8c8e0; color: #000000">blue_bright</div>
+<div class="terminal-color" style="background: #d8c0d8; color: #000000">magenta_bright</div>
+<div class="terminal-color" style="background: #98d0c8; color: #000000">cyan_bright</div>
+<div class="terminal-color" style="background: #f5f4f3; color: #000000">white_bright</div>
+<div class="terminal-color" style="background: #1a1b1a; color: #ffffff">black_dim</div>
+<div class="terminal-color" style="background: #e89088; color: #ffffff">red_dim</div>
+<div class="terminal-color" style="background: #78b870; color: #ffffff">green_dim</div>
+<div class="terminal-color" style="background: #d8c8a0; color: #000000">yellow_dim</div>
+<div class="terminal-color" style="background: #88a8c0; color: #ffffff">blue_dim</div>
+<div class="terminal-color" style="background: #c0a0c0; color: #ffffff">magenta_dim</div>
+<div class="terminal-color" style="background: #70b0a8; color: #ffffff">cyan_dim</div>
+<div class="terminal-color" style="background: #bfc2c3; color: #000000">white_dim</div>
+    </div>
+
+    <h2>Readability Test</h2>
+    <div class="contrast-test">
+        <div class="contrast-box" style="background: #232423">
+            <h4>On Background</h4>
+            <p style="color: #f5f4f3">Foreground bright (headings)</p>
+            <p style="color: #e8e6e4">Foreground text (primary)</p>
+            <p style="color: #d8d6d4">Foreground medium (secondary)</p>
+            <p style="color: #bfc2c3">Foreground dim (comments)</p>
+            <p style="color: #f0a090">Error message</p>
+            <p style="color: #eddeba">Warning message</p>
+            <p style="color: #88c880">Success message</p>
+            <p style="color: #98b8d0">Info message</p>
+        </div>
+        <div class="contrast-box" style="background: #3a3c3a">
+            <h4>On Background Light</h4>
+            <p style="color: #f5f4f3">Foreground bright (headings)</p>
+            <p style="color: #e8e6e4">Foreground text (primary)</p>
+            <p style="color: #d8d6d4">Foreground medium (secondary)</p>
+            <p style="color: #bfc2c3">Foreground dim (comments)</p>
+            <p style="color: #f0a090">Error message</p>
+            <p style="color: #eddeba">Warning message</p>
+            <p style="color: #88c880">Success message</p>
+            <p style="color: #98b8d0">Info message</p>
+        </div>
+    </div>
+
+    <div class="preview-box">
+        <h3>Terminal Preview</h3>
+        <p style="color: #f09088">red: Error output</p>
+        <p style="color: #88c880">green: Success / git additions</p>
+        <p style="color: #eddeba">yellow: Warnings / strings</p>
+        <p style="color: #90b0c8">blue: Info / directories</p>
+        <p style="color: #c8a8c8">magenta: Keywords / magenta</p>
+        <p style="color: #80c0b8">cyan: Cyan / special</p>
+    </div>
+</body>
+</html>
